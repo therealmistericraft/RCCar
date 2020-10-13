@@ -2,6 +2,8 @@ import pygame
 import RPi.GPIO as GPIO
 import time
 
+pygame.init()
+
 # Forewards: GPIO 7
 
 GPIO.setmode(GPIO.BCM)
