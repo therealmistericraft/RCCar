@@ -35,13 +35,13 @@ while carryOn:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 on(7)
-            if event.key == pygame.K_DOWN
+            if event.key == pygame.K_DOWN:
                 on(11)
         # Stop event
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
                 off(7)
-            if event.key == pygame.K.DOWN:
+            if event.key == pygame.K_DOWN:
                 off(11)
      
      # --- Limit to 60 frames per second
