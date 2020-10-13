@@ -9,3 +9,4 @@ for event in events:
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_UP:
                         
+# hallo funktioniert das?
