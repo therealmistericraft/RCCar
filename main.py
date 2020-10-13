@@ -1,6 +1,6 @@
 import pygame
 import RPi.GPIO as GPIO
-import time
+from time import sleep as sleep
 
 # Start Pygame in window
 pygame.init()
@@ -31,12 +31,21 @@ while carryOn:
     for event in pygame.event.get(): # User did something
         if event.type == pygame.QUIT: # If user clicked close
             carryOn = False # Flag that we are done so we exit this loop
+        # Start event
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-            on(7)
+                on(7)
+            if event.key == pygame.K_DOWN
+                on(11)
+        # Stop event
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_UP:
+                off(7)
+            if event.key == pygame.K.DOWN:
+                off(11)
      
      # --- Limit to 60 frames per second
-     clock.tick(60)
+        clock.tick(60)
 
 #Once we have exited the main program loop we can stop the game engine:
 pygame.quit()
