@@ -2,20 +2,41 @@ import pygame
 import RPi.GPIO as GPIO
 import time
 
+# Start Pygame in window
 pygame.init()
+size = (700, 500)
+screen = pygame.display.set_mode(size)
+pygame.display.set_caption("RCCar interface")
 
 # Forewards: GPIO 7
 
+# Setup GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(7, GPIO.OUT)
 
+# Shorten GPIO activator/deactivator
 def on(pin):
     GPIO.output(pin, GPIO.HIGH)
 def off(pin):
     GPIO.output(pin, GPIO.LOW)
+            
+carryOn = True
 
-events = pygame.event.get()
-for event in events:
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_UP:
+# The clock will be used to control how fast the screen updates
+clock = pygame.time.Clock()
+
+# -------- Main Program Loop -----------
+while carryOn:
+    # --- Main event loop
+    for event in pygame.event.get(): # User did something
+        if event.type == pygame.QUIT: # If user clicked close
+            carryOn = False # Flag that we are done so we exit this loop
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
             on(7)
+     
+     # --- Limit to 60 frames per second
+     clock.tick(60)
+
+#Once we have exited the main program loop we can stop the game engine:
+pygame.quit()
