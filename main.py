@@ -13,6 +13,7 @@ pygame.display.set_caption("RCCar interface")
 # Setup GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(7, GPIO.OUT)
+GPIO.setup(11, GPIO.OUT)
 
 # Shorten GPIO activator/deactivator
 def on(pin):
