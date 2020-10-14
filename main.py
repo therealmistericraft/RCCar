@@ -15,6 +15,7 @@ pygame.display.set_caption("RCCar interface")
 
 # Setup GPIO
 GPIO.setmode(GPIO.BCM)
+# Setup GPIOs as outputs (only needed after restart)
 GPIO.setup(7, GPIO.OUT)
 GPIO.setup(11, GPIO.OUT)
 GPIO.setup(9, GPIO.OUT)
