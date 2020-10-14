@@ -6,7 +6,7 @@ from time import sleep as sleep
 pygame.init()
 size = (700, 500)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("RCCar interface")
+pygame.display.set_caption("RCCar control-interface")
 
 # Forewards: GPIO 7
 # Backwards: GPIO 11
@@ -26,7 +26,7 @@ def on(pin):
     GPIO.output(pin, GPIO.HIGH)
 def off(pin):
     GPIO.output(pin, GPIO.LOW)
-            
+
 carryOn = True
 
 # The clock will be used to control how fast the screen updates
