@@ -9,11 +9,17 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("RCCar interface")
 
 # Forewards: GPIO 7
+# Backwards: GPIO 11
+# Right: GPIO 9
+# Left: GPIO 10
 
 # Setup GPIO
 GPIO.setmode(GPIO.BCM)
+# Setup GPIOs as outputs (only needed after restart)
 GPIO.setup(7, GPIO.OUT)
 GPIO.setup(11, GPIO.OUT)
+GPIO.setup(9, GPIO.OUT)
+GPIO.setup(10, GPIO.OUT)
 
 # Shorten GPIO activator/deactivator
 def on(pin):
@@ -38,15 +44,25 @@ while carryOn:
                 on(7)
             if event.key == pygame.K_DOWN:
                 on(11)
+            # Steering: on keydown, full impact, hold position
+            if event.key == pygame.K_RIGHT:
+                on(9)
+                sleep(1)
+                off(9)
         # Stop event
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
                 off(7)
             if event.key == pygame.K_DOWN:
                 off(11)
+            # Steering: on keyup, impact to standby (0 degrees)
+            if event.key == pygame.K_RIGHT:
+                on(10)
+                sleep(1)
+                off(10)
      
      # --- Limit to 60 frames per second
-        clock.tick(60)
+        clock.tick(1)
 
 #Once we have exited the main program loop we can stop the game engine:
 pygame.quit()
