@@ -60,7 +60,7 @@ while carryOn:
                 on(10)
                 sleep(1)
                 off(10)
-     
+
      # --- Limit to 60 frames per second
         clock.tick(1)
 
