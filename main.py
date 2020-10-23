@@ -29,6 +29,11 @@ def on(pin):
 
 def off(pin):
     GPIO.output(pin, GPIO.LOW)
+    
+def steer(gpio):
+    on(gpio)
+    sleep(1)
+    off(gpio)
 
 carryOn = True
 
@@ -53,9 +58,8 @@ while carryOn:
 
             # Steering: on keydown, full impact, hold position
             if event.key == pygame.K_RIGHT:
-                on(9)
-                sleep(1)
-                off(9)
+                t = threading.Thread(target=steer(9))
+                t.start()
 
         # Stop event
         if event.type == pygame.KEYUP:
@@ -67,9 +71,8 @@ while carryOn:
 
             # Steering: on keyup, impact to standby (0 degrees)
             if event.key == pygame.K_RIGHT:
-                on(10)
-                sleep(1)
-                off(10)
+                t = threading.Thread(target=steer(10))
+                t.start()
 
      # --- Limit window-update-rate to 60 frames per second
         clock.tick(60)
