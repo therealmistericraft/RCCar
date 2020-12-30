@@ -36,7 +36,7 @@ def unpower(pin):
     GPIO.output(pin, GPIO.LOW)
 
 def steer(gpio):
-    on(gpio)
+    power(gpio)
     sleep(1)
     unpower(gpio)
 
