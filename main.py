@@ -51,7 +51,7 @@ clock = pygame.time.Clock()
 while carryOn:
 
     # --- Main event loop
-    for event in pygame.event.get(): # User did something
+    for event in pygame.event.get(): # event-listener; detects interaction with controls
         if event.type == pygame.QUIT: # If user clicked close
             carryOn = False # Flag that we are done so we exit this loop
 
