@@ -51,7 +51,7 @@ clock = pygame.time.Clock()
 while carryOn:
 
     # --- Main event loop
-    for event in pygame.event.get(): # User did something
+    for event in pygame.event.get(): # event-listener; detects interaction with controls
         if event.type == pygame.QUIT: # If user clicked close
             carryOn = False # Flag that we are done so we exit this loop
 
@@ -68,6 +68,11 @@ while carryOn:
                 t = threading.Thread(target=steer(9))
                 t.start()
 
+            # Steering: on keydown, full impact, hold position
+            if event.key == pygame.K_LEFT:
+                t = threading.Thread(target=steer(10))
+                t.start()
+
         # Stop event
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
@@ -79,6 +84,11 @@ while carryOn:
             # Steering: on keyup, impact to standby (0 degrees)
             if event.key == pygame.K_RIGHT:
                 t = threading.Thread(target=steer(10))
+                t.start()
+
+            # Steering: on keyup, impact to standby (0 degrees)
+            if event.key == pygame.K_LEFT:
+                t = threading.Thread(target=steer(9))
                 t.start()
 
      # --- Limit window-update-rate to 60 frames per second
